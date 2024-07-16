@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #131314;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        
+        .header-container h2 {
+            margin: 0;
+        }
+        
+        .hero {
+            height: 60vh;
+            text-align: center;
+            padding: 100px 0;
+            /* background-color: #e50914; */
+            background-image: url(images/netflix.jpg);
+            background-position: 60%;
+            background-size: cover;
+            /* background: rgba(0, 0, 0, 0.5); */
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+        
+        .hero button {
+            background: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .hero button:hover {
+            background-color: white;
+            color: black;
+            border-radius: 20px 0 10px 2px;
+        }
+        
+        .diff {
+            min-height: 40vh;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        section .search-box {
+            margin-top: 10vh;
+            border-color: white;
+            position: relative;
+            height: 42px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .search-box input {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            background-color: #323334;
+            padding: 0 15px 0 45px;
+            color: #fff;
+            border-radius: 8px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            z-index: 2;
+            color: #999;
+            top: 50%;
+            left: 15px;
+            font-size: 20px;
+            transform: translateY(-50%);
+        }
+        
+        .movie-grid {
+            display: flex;
+            gap: 20px;
+            width: 80%;
+            max-height: 400px;
+            margin: -15px auto;
+        }
+        
+        .movie-item {
+            background-color: #fa1803;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+        
+        .movie-item img {
+            max-width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            transition: transform 0.2s linear;
+        }
+        
+        #lucii:hover {
+            transform: scale(1.01);
+        }
+        
+        .movie-item a #lucii {
+            width: 150vw;
+            height: 90%;
+            border-radius: 10px 5px 15px 0px;
+        }
+        
+        .hi {
+            display: none;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            background: linear-gradient(145deg, #f80303, #fa1803);
+            padding: 20px 0;
+        }
+        
+        .ff li:hover {
+            color: rgba(255, 42, 0, 0.9);
+            cursor: pointer;
+        }
+        
+        .footer h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer ul li {
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        .footer a img {
+            height: 30px;
+            width: 30px;
+            margin-right: 10px;
+        }
+        
+        hr {
+            border-top: 1px solid white;
+        }
+        
+        #copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: #6c757d;
+        }
+        
+        #living-room-1 {
+            height: 70vh;
+            border-radius: 10%;
+            position: relative;
+            z-index: 1;
+            top: -20%;
+            left: 25%;
+        }
+        
+        #living-room-2 {
+            height: 25vh;
+            width: 23vw;
+            border-radius: 10%;
+            position: relative;
+            z-index: 1;
+            top: -3%;
+            left: -1%;
+        }
+        
+        #table {
+            height: 40vh;
+            border-radius: 10%;
+            position: relative;
+            z-index: 2;
+            top: -20%;
+            left: 40%;
+        }
+        
+        #living-room-3 {
+            height: 30vh;
+            width: 25vw;
+            border-radius: 10%;
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 80%;
+        }
+        
+        #living-room-2:hover,
+        #table:hover,
+        #living-room-3:hover,
+        .tt:hover {
+            transform: translateY(-50px);
+            transition: all 0.1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="zz">
+        <header class="header-container ">
+            <h2 class="text-light text-center "><span style="color: red;">Netflix</span></h2>
+        </header>
+    </section>
+    <div class="conatiner-fluid ">
+        <section style="width: 90vw; margin-left: 70px;">
+            <nav class="navbar navbar-expand-lg navbar-dark ">
+                <a class="navbar-brand text-light" href="main.html">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="openNav()">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#imagelink"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="3d.html">Enjoy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="#footer">Kid's</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+
+        <section>
+            <div class="my-3">
+                <div id="place" class="carousel slide" data-ride="carousel">
+                    <ul class="carousel-indicators mt-3">
+                        <li data-target="#place" data-slide-to="0" class="active"></li>
+                        <li data-target="#place" data-slide-to="1"></li>
+                        <li data-target="#place" data-slide-to="2"></li>
+                    </ul>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="carousel-caption">
+                                <h1 class="text-danger" style="font-weight: bold; margin-top: -50%; font-size: 200px;">Welcome to NETFLIX</h1>
+                            </div>
+                            <img src="https://www.bollywoodhungama.com/wp-content/uploads/2022/04/K.G.F-%E2%80%93-Chapter-2-15.jpg" alt="image1" height="30%" width="100%">
+                            <div class="carousel-caption">
+                                <h3 class="text-dark">Kgf 2</h3>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carousel-caption">
+                                <h1 class="text-danger" style="font-weight: bold; margin-top: -50%; font-size: 200px;">Welcome to NETFLIX</h1>
+                            </div>
+                            <img src="images/harry.jpg" alt="image2" height="30%">
+                            <div class="carousel-caption">
+                                <h3 class="text-dark">Harry Potter</h3>
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carousel-caption">
+                                <h1 class="text-danger" style="font-weight: bold; margin-top: -80%; font-size: 150px;">Welcome to NETFLIX</h1>
+                            </div>
+                            <img src="https://i.ytimg.com/vi/8X3uF80H5LU/maxresdefault.jpg" alt="image3" width="100%">
+                            <div class="carousel-caption">
+                                <h3 class="text-dark">Munjya</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#place" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#place" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="diff">
+            <div class="search-box">
+                <a class="nav-link text-light" href="#"><i class="fas fa-search mt-3" style="color: white;"></i></a>
+                <input type="text" placeholder="search a movie" style="background-color: #fa1803;">
+            </div>
+        </section>
+        <div class="movie-grid" id="mov" style="margin-top: -10%; column-gap: 80px; margin-left: 13%; ">
+            <div class="movie-item " id="luci">
+                <a>
+                    <video width="500" height="300" controls>
+                        <source src="shorts/Stree2.mp4" type="video/mp4">
+                    </video>
+                    <h2 style="color: white;" id="nam">Stree 2</h2>
+                </a>
+            </div>
+
+            <div class="movie-item">
+                <a>
+                    <video width="500" height="300" controls>
+                        <source src="shorts/Avn.mp4" type="video/mp4">
+                    </video>
+                    <h2 style="color: white;" id="nam">Avengers</h2>
+                </a>
+            </div>
+        </div>
+        <div class="movie-grid" id="mov" style="margin-top: 6%; column-gap: 100px; margin-left: 13%;">
+            <div class="movie-item">
+                <a>
+                    <video width="500" height="300" controls>
+                        <source src="shorts/Amkdt.mp4" type="video/mp4">
+                    </video>
+                    <h2 style="color: white;" id="nam">ABKDT</h2>
+                </a>
+            </div>
+            <div class="movie-item">
+                <a>
+                    <video width="500" height="300" controls>
+                        <source src="shorts/kgf.mp4" type="video/mp4">
+                    </video>
+                    <h2 style="color: white;" id="nam">Kgf 2</h2>
+                </a>
+            </div>
+        </div>
+        <div class="movie-grid" id="mov" style="margin-top: 5%; column-gap: 100px; margin-left: 13%;">
+
+            <div class="movie-item">
+                <a id="Sv">
+                    <video width="500" height="300" controls>
+                        <source src="shorts/Munjya.mp4" type="video/mp4">
+                    </video>
+                    <h2 style="color: white;" id="nam">Munjya</h2>
+                </a>
+            </div>
+            <div class="movie-item">
+                <a>
+                    <video width="500" height="300" controls>
+                        <source src="shorts/Wkd.mp4" type="video/mp4">
+                    </video>
+                    <h4 style="color: white;" id="nam">Wagle Ki Duniya</h4>
+                </a>
+            </div>
+        </div>
+
+        <div class="movie-grid" id="mov" style="margin-top: 6%; column-gap: 100px; margin-left: 13%;">
+
+            <div class="movie-item">
+                <a>
+                    <video width="500" height="300" controls>
+                        <source src="shorts/videoplayback.mp4" type="video/mp4">
+                    </video>
+                    <h2 style="color: white;" id="nam">Force</h2>
+                </a>
+            </div>
+            <div class="movie-item">
+                <a>
+                    <video width="500" height="300" controls>
+                        <source src="shorts/BN.mp4" type="video/mp4">
+                    </video>
+                    <h2 style="color: white;" id="nam">Bad Newz</h2>
+                </a>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <section style="margin-top: 10%;">
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-lg-4 tt">
+                    <h3 class="text-light" style="text-decoration: underline; font-weight: 600;">About Webpage</h3>
+                    <p class="opacity-dark-50 text-light ">
+                        Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                    </p>
+                </div>
+                <div class="col-lg-6">
+
+                    <img id="living-room-2" src="images/harry.jpg" alt="" />
+                    <img id="table" class="img-fluid" src="images/avatar.jpg" alt="" />
+                    <img id="living-room-3" class="img-fluid" src="images/Pirates.webp" alt="" />
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <h3> List</h3>
+                    <ul id="foo" class="ff">
+                        <li>Kalki</li>
+                        <li>Silent Voice</li>
+                        <li>Shaktiman</li>
+                        <li>Naruto</li>
+                        <li>BadNewz</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Links</h3>
+                    <ul id="foo" class="ff">
+                        <li>Home</li>
+                        <li>About</li>
+                        <a href="#">
+                            <li>Gallery</li>
+                        </a>
+                        <li>Service</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Follow Us</h3>
+                    <a href="https://www.linkedin.com/in/prithviraj-kumar/"><img src="images/fb.png" alt="Facebook"></a>
+                    <a href="https://github.com/prithvihttp"><img src="images/github2.png" alt="Github"></a>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+
+    </footer>
+
+    <script>
+        function searchMovies() {
+            var input, filter, movieGrid, movieItem, a, h2, i, txtValue, hasResults = false;
+            input = document.querySelector('.search-box input');
+            filter = input.value.toUpperCase();
+            movieGrid = document.querySelectorAll('.movie-grid');
+
+
+            movieGrid.forEach(function(grid) {
+                movieItem = grid.querySelectorAll('.movie-item');
+                var gridHasResults = false;
+
+
+                for (i = 0; i < movieItem.length; i++) {
+                    a = movieItem[i].querySelector('a');
+                    h2 = a.querySelector('#nam');
+                    txtValue = h2.textContent || h2.innerText;
+
+
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        movieItem[i].style.display = 'block';
+                        var video = a.querySelector('video');
+                        video.style.height = '390px';
+                        video.style.width = '700px';
+                        gridHasResults = true;
+                    } else {
+                        movieItem[i].style.display = 'none';
+                    }
+                }
+
+
+                if (gridHasResults) {
+                    grid.style.display = 'flex';
+                    hasResults = true;
+                } else {
+                    grid.style.display = 'none';
+                }
+            });
+
+
+        }
+
+
+        document.querySelector('.search-box input').addEventListener('keyup', searchMovies);
+    </script>
+</body>
+
+</html>
